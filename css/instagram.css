@@ -1,0 +1,98 @@
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
+}
+
+main {
+  width: 100%;
+  max-width: 767px;
+  margin-inline: auto; /* centra horizontalmente */
+  margin: 0 auto;
+  padding: auto;
+}
+
+.ig-header{
+    position: sticky;
+    top: 0;
+    z-index: 10;          /* que quede por encima del contenido al hacer scroll */
+    align-self: stretch;
+    padding: 12px 20px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #fff;
+}
+
+.post-header{
+    align-self: stretch;
+    padding: 12px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.profile{
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    display: inline-flex;
+}
+
+.post-carrousel1,
+.post-carrousel2 {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;  /* se "imanta" a cada imagen */
+  -webkit-overflow-scrolling: touch;
+
+  /* ocultar la barra de scroll */
+  scrollbar-width: none;          /* Firefox */
+}
+
+.post-carrousel1::-webkit-scrollbar,
+.post-carrousel2::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari, Edge */
+}
+
+.post-carrousel1 img,
+.post-carrousel2 img {
+  flex: 0 0 100%;                 /* cada imagen ocupa el 100% del ancho del carrusel */
+  width: 100%;
+  height: auto;
+  scroll-snap-align: center;      /* punto donde se detiene cada imagen */
+  scroll-snap-stop: always;       /* evita que se salte imágenes al deslizar rápido */
+}
+.post-buttons{
+    align-self: stretch;
+    padding: 12px 12px 0 12px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.post-caption{
+    padding: 0 12px;
+}
+
+.links {
+    padding: 80px 12px 40px 12px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.links img {
+  height: 56px;
+  width: auto;
+}
