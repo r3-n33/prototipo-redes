@@ -67,7 +67,7 @@ main {
 .topbar {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 90px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: flex-end;        /* texto abajo, el subrayado ya no se separa */
