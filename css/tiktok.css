@@ -1,0 +1,156 @@
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
+}
+
+main {
+  width: 100%;
+  max-width: 767px;
+  margin-inline: auto; /* centra horizontalmente */
+  margin: 0 auto;
+  padding: auto;
+}
+  body {
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+/* ---------- FEED (scroll vertical, solo 2 posts) ---------- */
+  .feed {
+    position: absolute;
+    inset: 0;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+  }
+  .feed::-webkit-scrollbar { display: none; }
+
+  .post {
+    height: 100%;              /* cada post ocupa toda la pantalla */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;  /* evita saltarse posts */
+  }
+
+/* ---------- CARRUSEL ---------- */
+.carousel {
+  display: flex;
+  align-items: flex-start;      /* imagen pegada arriba, no centrada */
+  height: 100%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  background: #000;
+  padding-top: 90px;            /* altura de la barra superior */
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.carousel img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;                 /* mantiene la relación de aspecto */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+  
+
+  /* ---------- CAPAS FIJAS ---------- */
+/* ---------- BARRA SUPERIOR ---------- */
+.topbar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;        /* texto abajo, el subrayado ya no se separa */
+  gap: 20px;
+  padding-bottom: 8px;
+  color: #aaa;
+  background: #000;             /* sólido, sin degradado */
+  z-index: 10;
+  pointer-events: none;
+}
+.topbar span { padding-bottom: 6px; }
+.topbar .active {
+  color: #fff;
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
+
+/* ---------- BARRA LATERAL ---------- */
+.sidebar {
+  position: absolute;
+  right: 10px;
+  bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  color: white;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Avatar del usuario (ahora es un <img> directo) */
+.sidebar > img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+}
+
+/* Cada botón: icono + número */
+.sidebar .icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.sidebar .icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
+.sidebar small {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ---------- DESCRIPCIÓN ---------- */
+.caption {
+  position: absolute;
+  left: 0; right: 80px;
+  bottom: 80px;                 /* justo encima de la barra inferior */
+  padding: 12px 16px;
+  color: white;
+  font-size: 14px;
+  line-height: 1.4;
+  background: none;             /* quitamos el degradado: va sobre negro */
+  z-index: 10;
+  pointer-events: none;
+}
+
+  .bottomnav {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: #000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #ccc;
+    font-size: 12px;
+    z-index: 10;
+  }
+
